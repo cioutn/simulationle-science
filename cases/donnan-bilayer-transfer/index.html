@@ -11,17 +11,17 @@
 </head>
 <body>
   <a class="skip" href="#main">跳到正文</a>
-  <header class="site-header"><div class="wrap header-inner"><a class="brand" href="../../"><span class="brand-mark" aria-hidden="true"></span><span>SimulationLE <span class="brand-slash">/</span> Science</span></a><nav aria-label="主导航"><a href="../../#cases">案例档案</a><a href="../../#evaluation">评测说明</a><a class="nav-external" href="https://huayuankou333.github.io/omniale/simulationle-engineer/">Engineer <span aria-hidden="true">↗</span></a></nav></div></header>
+  <header class="site-header"><div class="wrap header-inner"><a class="brand" href="../../"><span class="brand-mark" aria-hidden="true"></span><span>SimulationLE <span class="brand-slash">/</span> Science</span></a><nav aria-label="主导航"><a href="../../#cases">案例档案</a><a class="nav-external" href="https://huayuankou333.github.io/omniale/simulationle-engineer/">Engineer <span aria-hidden="true">↗</span></a></nav></div></header>
   <main id="main" class="detail">
     <p class="breadcrumb"><a href="../../#cases">案例档案</a><span aria-hidden="true">/</span>材料学</p>
-    <header class="detail-header"><p class="eyebrow"><span></span> DONNAN BILAYER TRANSFER</p><h1>Donnan 双层凝胶</h1><p class="detail-lead">用均匀凝胶试样校准材料模型，预测粘合后双层结构的变形、自由行程和阻挡力。</p><ul class="detail-meta"><li>FEBio Studio 3.2</li><li>软材料力学</li><li>凝胶溶胀</li><li>跨几何预测</li></ul></header>
+    <header class="detail-header"><h1>Donnan 双层凝胶</h1><p class="detail-software">FEBio Studio 3.2</p></header>
     <figure class="detail-figure theme-gel">
-      <div class="figure-toolbar"><h2>双层与边界条件</h2><div class="figure-controls" role="group" aria-label="切换端部约束"><button type="button" data-mode="default" data-note="原创变形示意，自由端允许位移。网格和颜色用于区分两层材料。" aria-pressed="true">自由端</button><button type="button" data-mode="alternative" data-note="原创变形示意，阻挡工况限制末端位移，关注约束处的反力。" aria-pressed="false">阻挡端</button></div></div>
+      <div class="figure-toolbar"><h2>双层变形</h2><div class="figure-controls" role="group" aria-label="切换端部约束"><button type="button" data-mode="default" data-note="变形示意。两种颜色区分两层材料。" aria-pressed="true">自由端</button><button type="button" data-mode="alternative" data-note="受限变形示意。末端约束处产生反力。" aria-pressed="false">阻挡端</button></div></div>
       <canvas data-plot="gel-detail" role="img" aria-label="双层凝胶一端固定、一端自由的弯曲变形示意"></canvas>
-      <figcaption aria-live="polite">原创变形示意，自由端允许位移。网格和颜色用于区分两层材料。</figcaption>
+      <figcaption aria-live="polite">变形示意。两种颜色区分两层材料。</figcaption>
     </figure>
     <div class="detail-text">
-      <section><h2>科学问题</h2><p>带电凝胶在盐溶液中产生渗透压，溶胀和变形又会改变局部状态。用均匀试样识别出的材料规律，是否足以预测两层粘合后的力学行为？</p></section>
+      <section><h2>科学问题</h2><p>带电凝胶在盐溶液中产生渗透压并发生溶胀。这个软材料力学案例考察从均匀试样校准的材料模型，能否预测两层粘合后的变形与输出力。</p></section>
       <section><h2>数据与假设</h2><p>使用 54 条合成试样应力观测，以贝叶斯信息准则比较两类弹性模型，再将选定模型用于六种双层配置。配置包含不同几何、浴液条件和边界约束。</p></section>
       <section><h2>推断与交付</h2><p>报告空间变形、区域应力与体积，并计算自由行程或阻挡力。FEBio Studio 项目将模型和对应结果成对保留，供复查载荷、约束和仿真输出。</p></section>
       <section><h2>结论的适用范围</h2><p>预测与响应的相关不确定性都基于提交的拟合模型。任务还考察了外载、浴液变化与可做机械功的关系。</p></section>

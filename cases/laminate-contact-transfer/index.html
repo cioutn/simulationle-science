@@ -11,19 +11,19 @@
 </head>
 <body>
   <a class="skip" href="#main">跳到正文</a>
-  <header class="site-header"><div class="wrap header-inner"><a class="brand" href="../../"><span class="brand-mark" aria-hidden="true"></span><span>SimulationLE <span class="brand-slash">/</span> Science</span></a><nav aria-label="主导航"><a href="../../#cases">案例档案</a><a href="../../#evaluation">评测说明</a><a class="nav-external" href="https://huayuankou333.github.io/omniale/simulationle-engineer/">Engineer <span aria-hidden="true">↗</span></a></nav></div></header>
+  <header class="site-header"><div class="wrap header-inner"><a class="brand" href="../../"><span class="brand-mark" aria-hidden="true"></span><span>SimulationLE <span class="brand-slash">/</span> Science</span></a><nav aria-label="主导航"><a href="../../#cases">案例档案</a><a class="nav-external" href="https://huayuankou333.github.io/omniale/simulationle-engineer/">Engineer <span aria-hidden="true">↗</span></a></nav></div></header>
   <main id="main" class="detail">
     <p class="breadcrumb"><a href="../../#cases">案例档案</a><span aria-hidden="true">/</span>热学</p>
-    <header class="detail-header"><p class="eyebrow"><span></span> LAMINATE CONTACT TRANSFER</p><h1>层合材料热接触反演</h1><p class="detail-lead">从两面的瞬态热图推断看不见的接触热阻，再把同一组材料参数用于新的加热和换热条件。</p><ul class="detail-meta"><li>Elmer FEM 26.2.1</li><li>反演热成像</li><li>有限元</li></ul></header>
+    <header class="detail-header"><h1>层合材料热接触反演</h1><p class="detail-software">Elmer FEM 26.2.1</p></header>
     <figure class="detail-figure theme-thermal">
-      <div class="figure-toolbar"><h2>双面瞬态温度场</h2><div class="figure-controls" role="group" aria-label="切换观测面"><button type="button" data-mode="default" data-note="原创示意，正面在三个时刻的相对温度分布。横向为沿试片的位置。" aria-pressed="true">正面</button><button type="button" data-mode="alternative" data-note="原创示意，背面在相同时刻的相对温度分布。两面共用同一色标。" aria-pressed="false">背面</button></div></div>
+      <div class="figure-toolbar"><h2>瞬态温度场</h2><div class="figure-controls" role="group" aria-label="切换观测面"><button type="button" data-mode="default" data-note="正面温度示意。横向为沿试片的位置。" aria-pressed="true">正面</button><button type="button" data-mode="alternative" data-note="背面温度示意。两面共用色标。" aria-pressed="false">背面</button></div></div>
       <canvas data-plot="thermal-detail" role="img" aria-label="试片正面三个时刻的相对温度分布示意"></canvas>
-      <figcaption aria-live="polite">原创示意，正面在三个时刻的相对温度分布。横向为沿试片的位置。</figcaption>
+      <figcaption aria-live="polite">正面温度示意。横向为沿试片的位置。</figcaption>
     </figure>
     <div class="detail-text">
       <section><h2>科学问题</h2><p>埋藏界面的接触热阻、材料内部的导热和表面散热都会改变热图。要判断各自的影响，需要同时拟合两面和多种加热过程，并保留每个接触界面两侧的温度跳变。</p></section>
       <section><h2>数据与假设</h2><p>输入是三条层合试片在不同加热历史下的双面合成温度观测，吸收功率已知。每条试片用同一组材料参数解释该试片的全部校准历史。</p></section>
-      <section><h2>推断与交付</h2><p>从校准数据估计两个热阻分布、各向异性导热和表面换热参数，预测四种新条件下的内部温度及带方向的累积热量。Elmer 项目保留材料、边界条件和场解的复查入口。</p></section>
+      <section><h2>推断与交付</h2><p>用有限元模型估计两个热阻分布、各向异性导热和表面换热参数，预测四种新条件下的内部温度及带方向的累积热量。Elmer 项目保留材料、边界条件和场解。</p></section>
       <section><h2>结论的适用范围</h2><p>预测依赖指定的材料模型。评测还检查哪些热阻特征能从现有数据辨识，以及哪次额外测量最有助于缩小目标预测的不确定性。</p></section>
     </div>
   </main>

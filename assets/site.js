@@ -4,6 +4,7 @@ if (search) {
   const filters = [...document.querySelectorAll('[data-filter]')];
   const cards = [...document.querySelectorAll('.case-card')];
   const count = document.querySelector('#case-count');
+  const note = document.querySelector('#case-note');
   const emptyState = document.querySelector('#empty-state');
   const normalize = (value) => value.normalize('NFKC').toLowerCase();
   const searchable = cards.map((card) => normalize(`${card.innerText} ${card.dataset.keywords}`));
@@ -18,6 +19,7 @@ if (search) {
       if (!card.hidden) visible += 1;
     });
     count.textContent = `${visible} 个案例`;
+    note.hidden = visible === 0;
     emptyState.hidden = visible > 0;
   }
 
@@ -87,7 +89,7 @@ function line(context, x1, y1, x2, y2, color) {
 
 function label(context, value, x, y, color, align = 'left') {
   context.fillStyle = color;
-  context.font = '12px ui-monospace, system-ui, sans-serif';
+  context.font = '13px ui-monospace, system-ui, sans-serif';
   context.textAlign = align;
   context.fillText(value, x, y);
 }

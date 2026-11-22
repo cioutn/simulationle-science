@@ -15,63 +15,65 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="brand" href="./"><span class="brand-mark" aria-hidden="true"></span><span>SimulationLE <span class="brand-slash">/</span> Science</span></a>
-      <nav aria-label="主导航"><a href="#cases" aria-current="page">案例档案</a><a href="#evaluation">评测说明</a><a class="nav-external" href="https://huayuankou333.github.io/omniale/simulationle-engineer/">Engineer <span aria-hidden="true">↗</span></a></nav>
+      <nav aria-label="主导航"><a href="#cases" aria-current="page">案例档案</a><a class="nav-external" href="https://huayuankou333.github.io/omniale/simulationle-engineer/">Engineer <span aria-hidden="true">↗</span></a></nav>
     </div>
   </header>
   <main id="main">
     <section class="wrap hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow"><span></span> SCIENTIFIC COMPUTING CASEBOOK</p>
         <h1 id="hero-title">从观测出发，<br>让推断可验证。</h1>
-        <p class="hero-lead">记录 Agent 如何用专业科学软件，从带噪声的观测中建立模型、预测新条件下的响应，并留下可复查的证据。</p>
-        <a class="button" href="#cases">浏览四个案例</a>
+        <a class="button" href="#cases">浏览案例</a>
       </div>
       <a class="hero-figure" href="cases/longitudinal-pet-bounds/" aria-label="查看纵向 PET 摄取变化案例">
-        <div class="figure-top"><span>LONGITUDINAL PET</span><span>合成体模示意</span></div>
         <canvas data-plot="pet-hero" role="img" aria-label="两次访问的合成 PET 体模示意，展示形状和摄取信号的空间差异"></canvas>
-        <div class="figure-bottom"><span><b>纵向 PET 摄取变化</b><small>3D Slicer · 影像科学</small></span><span class="figure-link" aria-hidden="true">↗</span></div>
+        <div class="figure-bottom"><b>纵向 PET 摄取变化</b><span class="figure-note">示意图</span><span class="figure-link" aria-hidden="true">↗</span></div>
       </a>
     </section>
     <section id="cases" class="case-section">
       <div class="wrap">
         <div class="section-head">
-          <div><p class="eyebrow"><span></span> CASE ARCHIVE</p><h2>科学计算案例</h2></div>
-          <label class="search"><span class="search-icon" aria-hidden="true"></span><input type="search" id="case-search" placeholder="搜索案例、软件或领域" aria-label="搜索案例、软件或领域"></label>
+          <h2>科学计算案例</h2>
+          <label class="search"><span class="search-icon" aria-hidden="true"></span><input type="search" id="case-search" placeholder="搜索案例" aria-label="搜索案例、软件或领域"></label>
         </div>
-        <div class="filters" aria-label="按领域筛选">
+        <div class="filters" role="group" aria-label="按领域筛选">
           <button type="button" data-filter="all" aria-pressed="true">全部</button>
           <button type="button" data-filter="imaging" aria-pressed="false">影像科学</button>
           <button type="button" data-filter="thermal" aria-pressed="false">热学</button>
           <button type="button" data-filter="metabolism" aria-pressed="false">生物学</button>
           <button type="button" data-filter="mechanics" aria-pressed="false">材料学</button>
-          <span class="filter-count" id="case-count" role="status">4 个案例</span>
+          <span class="sr-only" id="case-count" role="status">4 个案例</span>
         </div>
         <div class="case-grid">
-          <article class="case-card" data-domain="imaging" data-keywords="3D Slicer longitudinal-pet-bounds 定量影像 配准 不确定性 体模">
-            <a class="card-visual theme-pet" href="cases/longitudinal-pet-bounds/" aria-label="打开纵向 PET 摄取变化"><canvas data-plot="pet-card" role="img" aria-label="配对 PET 体模示意"></canvas><span>成像示意</span></a>
-            <div class="card-body"><p class="case-meta"><strong>影像科学</strong> <span>3D Slicer 5.8.1</span></p><h3><a href="cases/longitudinal-pet-bounds/">纵向 PET 摄取变化 <span aria-hidden="true">↗</span></a></h3><p>当配准、分辨率和测量误差一起变化，哪些摄取变化的方向仍能确定？</p></div>
+          <article class="case-card" data-domain="imaging" data-keywords="longitudinal-pet-bounds 定量影像 配准 分辨率 测量误差 不确定性 体模">
+            <a class="case-link" href="cases/longitudinal-pet-bounds/" aria-labelledby="case-pet">
+              <div class="card-visual theme-pet"><canvas data-plot="pet-card" role="img" aria-label="配对 PET 体模示意"></canvas></div>
+              <div class="card-body"><h3 id="case-pet">纵向 PET 摄取变化</h3><p class="case-meta"><strong>影像科学</strong> <span>3D Slicer 5.8.1</span></p></div>
+            </a>
           </article>
-          <article class="case-card" data-domain="thermal" data-keywords="Elmer FEM laminate-contact-transfer 热传递 热阻 热学 材料 反演 热图">
-            <a class="card-visual theme-thermal" href="cases/laminate-contact-transfer/" aria-label="打开层合材料热接触反演"><canvas data-plot="thermal-card" role="img" aria-label="层合材料表面的瞬态热分布示意"></canvas><span>热场示意</span></a>
-            <div class="card-body"><p class="case-meta"><strong>热学</strong> <span>Elmer FEM 26.2.1</span></p><h3><a href="cases/laminate-contact-transfer/">层合材料热接触反演 <span aria-hidden="true">↗</span></a></h3><p>能否从两面的瞬态热图，定位埋藏的热阻，并预测移动热源下的内部热流？</p></div>
+          <article class="case-card" data-domain="thermal" data-keywords="laminate-contact-transfer 热传递 热阻 热学 材料 反演 热图 移动热源 热流">
+            <a class="case-link" href="cases/laminate-contact-transfer/" aria-labelledby="case-thermal">
+              <div class="card-visual theme-thermal"><canvas data-plot="thermal-card" role="img" aria-label="层合材料表面的瞬态热分布示意"></canvas></div>
+              <div class="card-body"><h3 id="case-thermal">层合材料热接触反演</h3><p class="case-meta"><strong>热学</strong> <span>Elmer FEM 26.2.1</span></p></div>
+            </a>
           </article>
-          <article class="case-card" data-domain="metabolism" data-keywords="Virtual Cell VCell glycolysis-redistribution 系统生物学 代谢 反应扩散 糖酵解">
-            <a class="card-visual theme-metabolism" href="cases/glycolysis-redistribution/" aria-label="打开空间糖酵解分配"><canvas data-plot="metabolism-card" role="img" aria-label="空间代谢模型在不同时刻的浓度分布示意"></canvas><span>浓度场示意</span></a>
-            <div class="card-body"><p class="case-meta"><strong>生物学</strong> <span>Virtual Cell 8.1.8.06</span></p><h3><a href="cases/glycolysis-redistribution/">空间糖酵解分配 <span aria-hidden="true">↗</span></a></h3><p>如何在多种空间扰动下同时比较局部代谢物累积与整体 ATP 周转？</p></div>
+          <article class="case-card" data-domain="metabolism" data-keywords="VCell glycolysis-redistribution 系统生物学 代谢 反应扩散 糖酵解 空间扰动 ATP 周转">
+            <a class="case-link" href="cases/glycolysis-redistribution/" aria-labelledby="case-metabolism">
+              <div class="card-visual theme-metabolism"><canvas data-plot="metabolism-card" role="img" aria-label="空间代谢模型在不同时刻的浓度分布示意"></canvas></div>
+              <div class="card-body"><h3 id="case-metabolism">空间糖酵解分配</h3><p class="case-meta"><strong>生物学</strong> <span>Virtual Cell 8.1.8.06</span></p></div>
+            </a>
           </article>
-          <article class="case-card" data-domain="mechanics" data-keywords="FEBio Studio donnan-bilayer-transfer 软材料力学 水凝胶 双层 凝胶 膨胀">
-            <a class="card-visual theme-gel" href="cases/donnan-bilayer-transfer/" aria-label="打开 Donnan 双层凝胶"><canvas data-plot="gel-card" role="img" aria-label="粘合双层凝胶弯曲与变形网格示意"></canvas><span>变形示意</span></a>
-            <div class="card-body"><p class="case-meta"><strong>材料学</strong> <span>FEBio Studio 3.2</span></p><h3><a href="cases/donnan-bilayer-transfer/">Donnan 双层凝胶 <span aria-hidden="true">↗</span></a></h3><p>用均匀试样校准的材料模型，能否预测粘合双层的变形、行程和力？</p></div>
+          <article class="case-card" data-domain="mechanics" data-keywords="donnan-bilayer-transfer 软材料力学 水凝胶 双层 凝胶 膨胀 溶胀 变形 自由行程 阻挡力">
+            <a class="case-link" href="cases/donnan-bilayer-transfer/" aria-labelledby="case-gel">
+              <div class="card-visual theme-gel"><canvas data-plot="gel-card" role="img" aria-label="粘合双层凝胶弯曲与变形网格示意"></canvas></div>
+              <div class="card-body"><h3 id="case-gel">Donnan 双层凝胶</h3><p class="case-meta"><strong>材料学</strong> <span>FEBio Studio 3.2</span></p></div>
+            </a>
           </article>
         </div>
-        <div class="empty-state" id="empty-state" hidden><p>没有符合当前条件的案例。</p><button type="button" id="reset-search">清除搜索与筛选</button></div>
+        <p class="case-note" id="case-note">封面均为示意图</p>
+        <div class="empty-state" id="empty-state" hidden><p>没有匹配的案例。</p><button type="button" id="reset-search">清除搜索与筛选</button></div>
       </div>
     </section>
-    <section class="wrap evaluation" id="evaluation">
-      <div><p class="eyebrow"><span></span> EVALUATION</p><h2>评测看什么？</h2><p>案例既记录模型的科学结论，也记录专业软件里可以重新打开的交付物。</p></div>
-      <dl><div><dt>推断与预测</dt><dd>从输入、假设到结论，检查参数、响应及其不确定性是否符合各题的科学要求。</dd></div><div><dt>原生交付</dt><dd>检查场景或项目是否保留了预测所依赖的数据和配置，并能够在指定软件版本中复查。</dd></div><div><dt>适用范围</dt><dd>说明推断依赖哪些假设，以及预测覆盖哪些观测和条件。</dd></div></dl>
-    </section>
   </main>
-  <footer class="site-footer"><div class="wrap footer-inner"><span>SimulationLE <span class="brand-slash">/</span> Science</span><span>科学计算案例档案</span><a href="https://github.com/cioutn/simulationle-science">GitHub 仓库 <span aria-hidden="true">↗</span></a></div></footer>
+  <footer class="site-footer"><div class="wrap footer-inner"><a href="https://github.com/cioutn/simulationle-science">GitHub 仓库 <span aria-hidden="true">↗</span></a></div></footer>
 </body>
 </html>
