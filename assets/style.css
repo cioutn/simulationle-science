@@ -38,7 +38,7 @@ nav a[aria-current], nav a:hover { color: var(--accent-dark); }
 canvas { display: block; width: 100%; }
 .case-section { padding: 48px 0 35px; }
 .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; }
-.section-head h1 { font-size: clamp(37px, 5vw, 65px); line-height: 1.12; letter-spacing: -.055em; }
+.section-head h1 { font-size: clamp(31px, 4.6vw, 65px); line-height: 1.12; letter-spacing: -.055em; }
 .search { position: relative; display: block; width: min(310px, 100%); }
 .search input { width: 100%; min-height: 44px; border: 1px solid var(--line); border-radius: 7px; padding: 7px 12px 7px 37px; color: var(--ink); background: var(--white); }
 .search-icon { position: absolute; top: 15px; left: 14px; width: 12px; height: 12px; border: 1.5px solid var(--subtle); border-radius: 50%; pointer-events: none; }
@@ -130,6 +130,7 @@ canvas { display: block; width: 100%; }
   .brand-mark::before, .brand-mark::after { inset: 5px 8px; }
   .case-section { padding-block: 32px; }
   .section-head { align-items: flex-start; flex-direction: column; gap: 13px; }
+  .section-head h1 { font-size: clamp(27px, 7.5vw, 43px); }
   .search { width: 100%; }
   .filters { gap: 6px; margin-block: 13px; }
   .filters button { padding-inline: 8px; }
