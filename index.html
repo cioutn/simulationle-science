@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="SimulationLE / Science 收录四个科学研究任务，介绍各任务的问题、输入和预期交付。">
-  <meta name="theme-color" content="#f7f6f1">
+  <meta name="theme-color" content="#f8f7f3">
   <title>SimulationLE / Science</title>
   <link rel="icon" href="assets/favicon.png">
   <link rel="stylesheet" href="assets/style.css">
@@ -27,55 +27,55 @@
         </div>
         <div class="filters" role="group" aria-label="按领域筛选">
           <button type="button" data-filter="all" aria-pressed="true">全部</button>
-          <button type="button" data-filter="imaging" aria-pressed="false">影像科学</button>
+          <button type="button" data-filter="medicine" aria-pressed="false">医学</button>
           <button type="button" data-filter="thermal" aria-pressed="false">热学</button>
           <button type="button" data-filter="metabolism" aria-pressed="false">生物学</button>
           <button type="button" data-filter="mechanics" aria-pressed="false">材料学</button>
           <span class="sr-only" id="case-count" role="status">4 个案例</span>
         </div>
         <div class="case-grid">
-          <article class="case-card" data-domain="imaging" data-keywords="longitudinal-pet-bounds 定量影像 配准 分辨率 测量误差 不确定性 体模">
+          <article class="case-card" data-domain="medicine" data-keywords="longitudinal-pet-bounds 医学影像 定量影像 影像科学 配准 分辨率 测量误差 不确定性 体模">
             <a class="case-link" href="cases/longitudinal-pet-bounds/" aria-labelledby="case-pet">
-              <div class="card-visual theme-pet"><canvas data-plot="pet-card" role="img" aria-label="PET 体模切片示意"></canvas></div>
               <div class="card-body">
-                <p class="case-meta"><strong>影像科学</strong> <span>3D Slicer 5.8.1</span></p>
+                <p class="case-meta"><strong>医学</strong> <span>3D Slicer 5.8.1</span></p>
                 <h2 id="case-pet">纵向 PET 摄取变化</h2>
-                <p class="case-question">考虑配准和测量误差后，两次扫描间的摄取变化方向还能确定吗？</p>
-                <p class="case-output"><strong>预期交付</strong> 摄取变化区间、3D Slicer 场景</p>
+                <p class="case-question">考虑测量误差后，能否判断两次扫描间摄取变化的方向？</p>
               </div>
+              <div class="card-visual theme-pet"><canvas data-plot="pet-card" role="img" aria-label="PET 体模切片示意"></canvas></div>
+              <p class="case-output"><strong>预期交付</strong> 摄取变化区间、3D Slicer 场景</p>
             </a>
           </article>
           <article class="case-card" data-domain="thermal" data-keywords="laminate-contact-transfer 热传递 热阻 热学 材料 反演 热图 移动热源 热流">
             <a class="case-link" href="cases/laminate-contact-transfer/" aria-labelledby="case-thermal">
-              <div class="card-visual theme-thermal"><canvas data-plot="thermal-card" role="img" aria-label="层合材料表面的瞬态热分布示意"></canvas></div>
               <div class="card-body">
                 <p class="case-meta"><strong>热学</strong> <span>Elmer FEM 26.2.1</span></p>
                 <h2 id="case-thermal">层合材料热接触反演</h2>
                 <p class="case-question">能否从两面的热图估计内部接触热阻，并预测新工况的热流？</p>
-                <p class="case-output"><strong>预期交付</strong> 温度与热量预测、Elmer 项目</p>
               </div>
+              <div class="card-visual theme-thermal"><canvas data-plot="thermal-card" role="img" aria-label="层合材料表面的瞬态热分布示意"></canvas></div>
+              <p class="case-output"><strong>预期交付</strong> 温度与热量预测、Elmer 项目</p>
             </a>
           </article>
           <article class="case-card" data-domain="metabolism" data-keywords="VCell glycolysis-redistribution 系统生物学 代谢 反应扩散 糖酵解 空间扰动 ATP 周转">
             <a class="case-link" href="cases/glycolysis-redistribution/" aria-labelledby="case-metabolism">
-              <div class="card-visual theme-metabolism"><canvas data-plot="metabolism-card" role="img" aria-label="空间代谢模型在不同时刻的浓度分布示意"></canvas></div>
               <div class="card-body">
                 <p class="case-meta"><strong>生物学</strong> <span>Virtual Cell 8.1.8.06</span></p>
                 <h2 id="case-metabolism">空间糖酵解分配</h2>
                 <p class="case-question">怎样调整酶分配，才能减少局部代谢物累积并维持 ATP 周转？</p>
-                <p class="case-output"><strong>预期交付</strong> 分配方案、时空预测、空间模型</p>
               </div>
+              <div class="card-visual theme-metabolism"><canvas data-plot="metabolism-card" role="img" aria-label="空间代谢模型在不同时刻的浓度分布示意"></canvas></div>
+              <p class="case-output"><strong>预期交付</strong> 分配方案、时空预测、空间模型</p>
             </a>
           </article>
           <article class="case-card" data-domain="mechanics" data-keywords="donnan-bilayer-transfer 软材料力学 水凝胶 双层 凝胶 膨胀 溶胀 变形 自由行程 阻挡力">
             <a class="case-link" href="cases/donnan-bilayer-transfer/" aria-labelledby="case-gel">
-              <div class="card-visual theme-gel"><canvas data-plot="gel-card" role="img" aria-label="粘合双层凝胶弯曲与变形网格示意"></canvas></div>
               <div class="card-body">
                 <p class="case-meta"><strong>材料学</strong> <span>FEBio Studio 3.2</span></p>
                 <h2 id="case-gel">Donnan 双层凝胶</h2>
                 <p class="case-question">用均匀试样校准的模型，能预测双层凝胶的变形和出力吗？</p>
-                <p class="case-output"><strong>预期交付</strong> 自由行程与阻挡力预测、FEBio 项目</p>
               </div>
+              <div class="card-visual theme-gel"><canvas data-plot="gel-card" role="img" aria-label="粘合双层凝胶弯曲与变形网格示意"></canvas></div>
+              <p class="case-output"><strong>预期交付</strong> 自由行程与阻挡力预测、FEBio 项目</p>
             </a>
           </article>
         </div>
