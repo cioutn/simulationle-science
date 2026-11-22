@@ -17,22 +17,45 @@
     <header class="detail-header">
       <h1>空间糖酵解分配</h1>
       <p class="detail-question">怎样调整酶分配，才能降低局部乙醛暴露，同时维持 ATPase 周转？</p>
-      <p class="detail-software">Virtual Cell 8.1.8.06</p>
+      <p class="detail-software"><a href="https://vcell.org/">Virtual Cell 8.1.8.06</a></p>
     </header>
     <dl class="case-brief" aria-label="任务概览">
       <div><dt>给定输入</dt><dd>两组带噪声的合成时空观测，以及描述 23 种代谢物的反应扩散模型。</dd></div>
       <div><dt>要做的事</dt><dd>从观测推断共享的动力学和输运参数，在三种预设条件下比较固定分配和候选方案。</dd></div>
-      <div><dt>预期交付</dt><dd>一套分配方案、两种分配下 23 种代谢物的时空预测，以及可复查的 Virtual Cell 项目。</dd></div>
+      <div><dt>预期交付</dt><dd>分配方案、23 种代谢物的时空预测，以及可重新打开的空间模型。</dd></div>
     </dl>
-    <figure class="detail-figure theme-metabolism">
-      <div class="figure-toolbar"><h2>代谢物浓度</h2><div class="figure-controls" role="group" aria-label="切换示意条件"><button type="button" data-mode="default" data-note="条件 A 的浓度示意。时间自上而下。" aria-pressed="true">条件 A</button><button type="button" data-mode="alternative" data-note="条件 B 的浓度示意。两种条件共用色标。" aria-pressed="false">条件 B</button></div></div>
+    <nav class="case-nav" aria-label="本页目录"><a href="#task">任务拆解</a><a href="#inputs">输入与来源</a><a href="#figure">图示</a><a href="#outputs">预期交付</a></nav>
+    <section class="case-block" id="task">
+      <h2>同时比较局部暴露和整体周转</h2>
+      <p class="case-intro">整体平均浓度可能掩盖局部乙醛峰值。任务同时关注暴露最重的区域，以及整个系统的 ATPase 周转。</p>
+      <ol class="task-steps">
+        <li><strong>用两组观测校准</strong><p>从不同供糖历史中的时空测量，估计四个共享的动力学与输运因子。</p></li>
+        <li><strong>比较两套分配</strong><p>在保持各酶总量的条件下，将候选分配和固定分配分别用于三种预设扰动，共得到六组时空预测。</p></li>
+        <li><strong>解释方案的代价</strong><p>比较最坏区域的乙醛暴露和各工况的平均 ATPase 周转，并报告这些比较对参数不确定性的敏感程度。</p></li>
+      </ol>
+    </section>
+    <section class="case-block" id="inputs">
+      <h2>输入与来源</h2>
+      <dl class="resource-list">
+        <div><dt>动力学来源</dt><dd>公开的 <a href="https://github.com/biomodels/MODEL1303260018/tree/aa63c39bb0b79697759fc6769838ebf2919d16e9">BioModels 糖酵解模型</a>提供反应动力学。本案例另定义 23 种代谢物的空间输运。</dd></div>
+        <div><dt>合成校准观测</dt><dd>两组供糖历史各在 12 个时刻观测 3 个区域。测量 ATP、NADH、乙醛和果糖-1,6-二磷酸，浓度以 mM 表示。</dd></div>
+        <div><dt>前瞻条件</dt><dd>两种不同的供糖变化和一种局部 ATPase 需求变化，用于比较同一组参数在新条件下的预测。</dd></div>
+      </dl>
+    </section>
+    <figure class="detail-figure theme-metabolism" id="figure">
+      <div class="figure-toolbar"><h2>代谢物浓度</h2><div class="figure-controls" role="group" aria-label="切换示意分配"><button type="button" data-mode="default" data-note="基准分配的读图示意。横轴为空间，时间自上而下。" aria-pressed="true">基准分配</button><button type="button" data-mode="alternative" data-note="候选分配的读图示意。两图共用相对浓度色标。" aria-pressed="false">候选分配</button></div></div>
       <canvas data-plot="metabolism-detail" role="img" aria-label="二维热图示意代谢物的相对浓度随空间位置和时间变化"></canvas>
-      <figcaption aria-live="polite">条件 A 的浓度示意。时间自上而下。</figcaption>
+      <figcaption aria-live="polite">基准分配的读图示意。横轴为空间，时间自上而下。</figcaption>
     </figure>
-    <div class="detail-text">
-      <section><h2>关键难点</h2><p>在这项系统生物学任务中，整体平均浓度可能掩盖局部峰值。分配方案需要同时满足局部暴露和整体周转两方面的要求。</p></section>
-      <section><h2>结论的适用范围</h2><p>候选方案的比较依赖设定的空间模型、校准数据和三种预设扰动条件。</p></section>
-    </div>
+    <section class="case-block" id="outputs">
+      <h2>预期交付与复查</h2>
+      <table class="deliverable-table" aria-label="预期交付文件"><thead><tr><th scope="col">产物</th><th scope="col">打开后能核对什么</th></tr></thead><tbody>
+        <tr><th scope="row"><code>answer.json</code></th><td>拟合因子、酶分配、各区乙醛暴露、ATPase 周转及不确定性分析。</td></tr>
+        <tr><th scope="row"><code>fields.npz</code></th><td>六组预测中 23 种代谢物随时间和空间位置变化的浓度。</td></tr>
+        <tr><th scope="row"><code>project.zip</code></th><td>可重新打开的原生或声明式空间模型，包含两组校准与六组预测的方程和配置。</td></tr>
+      </tbody></table>
+      <p class="case-scope"><strong>适用范围</strong>分配方案的比较依赖设定的空间模型、校准数据和三种预设扰动条件。</p>
+    </section>
   </main>
   <footer class="site-footer"><div class="wrap footer-inner"><a href="../../#cases">返回案例档案</a><a href="../donnan-bilayer-transfer/">下一案例 · Donnan 双层凝胶 <span aria-hidden="true">↗</span></a></div></footer>
 </body>

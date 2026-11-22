@@ -86,16 +86,38 @@ canvas { display: block; width: 100%; }
 .case-brief > div + div { border-left: 1px solid var(--line); }
 .case-brief dt { color: var(--accent-dark); font-weight: 750; margin-bottom: 5px; }
 .case-brief dd { color: var(--ink); }
+.case-nav { position: sticky; top: 0; z-index: 2; gap: 8px clamp(14px, 3vw, 32px); min-height: 52px; padding-block: 9px; border-block: 1px solid var(--line); background: var(--page); }
+.case-nav a { padding-block: 4px; font-size: 15px; font-weight: 650; }
+.case-nav a:hover { text-decoration: underline; text-underline-offset: .2em; }
+.case-block, .detail-figure { scroll-margin-top: 76px; }
+.case-block { padding-block: 29px; }
+.case-block + .case-block { border-top: 1px solid var(--line); }
+.case-block h2 { margin-bottom: 9px; font-size: clamp(25px, 3vw, 35px); line-height: 1.26; letter-spacing: -.035em; }
+.case-intro { max-width: 810px; color: var(--subtle); font-size: 17px; }
+.task-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px 30px; margin: 18px 0 0; padding-inline-start: 1.35em; }
+.task-steps li::marker { color: var(--accent-dark); font-weight: 750; }
+.task-steps strong { display: block; margin-bottom: 4px; }
+.task-steps p { color: var(--subtle); }
+.resource-list { margin-top: 16px; border-block: 1px solid var(--line); }
+.resource-list > div { display: grid; grid-template-columns: minmax(110px, .26fr) 1fr; gap: 5px 16px; padding-block: 11px; }
+.resource-list > div + div { border-top: 1px solid var(--line); }
+.resource-list dt { font-weight: 700; }
+.resource-list dd { color: var(--subtle); }
+.resource-list a, .detail-software a { color: var(--accent-dark); text-decoration: underline; text-underline-offset: .2em; }
 .detail-figure { background: var(--white); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
 .figure-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 17px; }
 .figure-toolbar h2 { font-size: 17px; letter-spacing: 0; }
 .detail-figure canvas { height: clamp(235px, 33vw, 350px); }
 .detail-figure figcaption { padding: 10px 17px; color: var(--subtle); font-size: 15px; min-height: 46px; }
-.detail-text { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(24px, 5vw, 64px); padding-block: 35px 45px; }
-.detail-text section { border-top: 1px solid var(--line); padding: 19px 0 21px; }
-.detail-text h2 { font-size: 24px; letter-spacing: -.03em; margin-bottom: 9px; }
-.detail-text p { color: var(--subtle); }
-.detail-text p + p { margin-top: 9px; }
+.deliverable-table { width: 100%; border-collapse: collapse; table-layout: fixed; margin-top: 14px; text-align: left; }
+.deliverable-table th, .deliverable-table td { border-bottom: 1px solid var(--line); padding: 10px 12px; vertical-align: top; overflow-wrap: anywhere; }
+.deliverable-table thead { background: var(--lavender); }
+.deliverable-table thead th:first-child { width: 29%; }
+.deliverable-table tbody th { font-weight: 650; }
+.deliverable-table tbody td { color: var(--subtle); }
+.deliverable-table code { font-size: .94em; }
+.case-scope { margin-top: 17px; border-left: 3px solid #b8a7e4; padding-left: 12px; color: var(--subtle); }
+.case-scope strong { color: var(--ink); margin-right: 5px; }
 @media (max-width: 920px) {
   .wrap, .detail { width: calc(100% - 56px); }
   .case-grid { grid-template-columns: 1fr; }
@@ -113,11 +135,15 @@ canvas { display: block; width: 100%; }
   .filters button { padding-inline: 8px; }
   .case-link { grid-template-columns: minmax(72px, 26%) minmax(0, 1fr); }
   .card-body { padding: 13px 13px 14px; }
-  .case-brief, .detail-text { grid-template-columns: 1fr; }
+  .case-brief, .task-steps, .resource-list > div { grid-template-columns: 1fr; }
   .case-brief > div { padding: 12px 14px; }
   .case-brief > div + div { border-left: 0; border-top: 1px solid var(--line); }
+  .case-nav { gap: 5px clamp(8px, 3vw, 15px); }
+  .case-nav a { font-size: 14px; }
+  .case-block { padding-block: 24px; }
+  .deliverable-table thead th:first-child { width: 35%; }
+  .deliverable-table th, .deliverable-table td { padding-inline: 7px; }
   .figure-toolbar { flex-wrap: wrap; }
   .breadcrumb { margin-block: 18px 23px; }
-  .detail-text { padding-block: 23px 37px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

@@ -17,22 +17,45 @@
     <header class="detail-header">
       <h1>Donnan 双层凝胶</h1>
       <p class="detail-question">用均匀试样校准的模型，能否预测双层凝胶在盐溶液中的变形和出力？</p>
-      <p class="detail-software">FEBio Studio 3.2</p>
+      <p class="detail-software"><a href="https://github.com/febiosoftware/FEBioStudio">FEBio Studio 3.2</a></p>
     </header>
     <dl class="case-brief" aria-label="任务概览">
       <div><dt>给定输入</dt><dd>54 条带电凝胶试样的合成应力观测，以及六种双层几何、浴液与边界约束的组合。</dd></div>
       <div><dt>要做的事</dt><dd>拟合两类弹性模型，用贝叶斯信息准则选择模型，再预测粘合双层结构的溶胀和变形。</dd></div>
       <div><dt>预期交付</dt><dd>变形、应力、体积、自由行程或阻挡力的预测及其不确定性，以及可复查的 FEBio Studio 项目。</dd></div>
     </dl>
-    <figure class="detail-figure theme-gel">
+    <nav class="case-nav" aria-label="本页目录"><a href="#task">任务拆解</a><a href="#inputs">输入与来源</a><a href="#figure">图示</a><a href="#outputs">预期交付</a></nav>
+    <section class="case-block" id="task">
+      <h2>从均匀试样推到粘合双层</h2>
+      <p class="case-intro">盐溶液改变带电凝胶的渗透压，凝胶变形又会改变内部状态。校准得到的材料模型要保留这种耦合，才能预测粘合后的行为。</p>
+      <ol class="task-steps">
+        <li><strong>比较材料模型</strong><p>拟合两类弹性模型，用贝叶斯信息准则平衡试样应力拟合程度与模型复杂度。</p></li>
+        <li><strong>区分行程与阻挡力</strong><p>在自由工况下报告末端行程，在阻挡工况下报告约束反力，并查看双层的区域应力和体积变化。</p></li>
+        <li><strong>追踪预测的不确定性</strong><p>把共同的材料参数与浴液不确定性传到多个响应，比较哪些行程和力会一起变化。</p></li>
+      </ol>
+    </section>
+    <section class="case-block" id="inputs">
+      <h2>输入与来源</h2>
+      <dl class="resource-list">
+        <div><dt>合成校准数据</dt><dd>54 条均匀凝胶试样的标称应力观测，附噪声水平和两类材料模型的参数范围。</dd></div>
+        <div><dt>六种双层工况</dt><dd>长条自由端、宽条自由端与长条阻挡端，各自在 30 mM 和 150 mM 盐浴下独立制备。</dd></div>
+        <div><dt>测量量</dt><dd>在固定端定义的坐标系中报告变形。自由行程以 mm 表示，阻挡力以 N 表示。</dd></div>
+      </dl>
+    </section>
+    <figure class="detail-figure theme-gel" id="figure">
       <div class="figure-toolbar"><h2>双层变形</h2><div class="figure-controls" role="group" aria-label="切换端部约束"><button type="button" data-mode="default" data-note="变形示意。两种颜色区分两层材料。" aria-pressed="true">自由端</button><button type="button" data-mode="alternative" data-note="受限变形示意。末端约束处产生反力。" aria-pressed="false">阻挡端</button></div></div>
       <canvas data-plot="gel-detail" role="img" aria-label="双层凝胶一端固定、一端自由的弯曲变形示意"></canvas>
       <figcaption aria-live="polite">变形示意。两种颜色区分两层材料。</figcaption>
     </figure>
-    <div class="detail-text">
-      <section><h2>关键难点</h2><p>在这项软材料力学任务中，渗透压驱动凝胶溶胀，变形又会改变局部状态。将试样模型用于粘合结构时，需要保留这种耦合。</p></section>
-      <section><h2>结论的适用范围</h2><p>预测取决于拟合的材料规律，以及设定的浴液、载荷和边界条件。</p></section>
-    </div>
+    <section class="case-block" id="outputs">
+      <h2>预期交付与复查</h2>
+      <table class="deliverable-table" aria-label="预期交付文件"><thead><tr><th scope="col">产物</th><th scope="col">打开后能核对什么</th></tr></thead><tbody>
+        <tr><th scope="row"><code>study.json</code></th><td>材料模型选择、六种配置的变形和区域响应，以及行程与阻挡力的不确定性。</td></tr>
+        <tr><th scope="row"><code>study.fsp</code></th><td>在 FEBio Studio 中打开整个研究项目，定位六种主要工况及用于材料、浴液和载荷敏感性分析的附加工况。</td></tr>
+        <tr><th scope="row"><code>.feb</code> 与 <code>.xplt</code></th><td>18 对原生模型和结果文件，可以逐一核对几何、材料、约束和对应场解。</td></tr>
+      </tbody></table>
+      <p class="case-scope"><strong>适用范围</strong>预测取决于拟合的材料规律，以及设定的浴液、载荷和边界条件。</p>
+    </section>
   </main>
   <footer class="site-footer"><div class="wrap footer-inner"><a href="../../#cases">返回案例档案</a><a href="../longitudinal-pet-bounds/">继续浏览 · 纵向 PET 摄取变化 <span aria-hidden="true">↗</span></a></div></footer>
 </body>

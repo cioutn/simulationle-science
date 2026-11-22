@@ -17,22 +17,45 @@
     <header class="detail-header">
       <h1>层合材料热接触反演</h1>
       <p class="detail-question">能否从试片两面的热图估计内部接触热阻，并用同一模型预测新工况的热传递？</p>
-      <p class="detail-software">Elmer FEM 26.2.1</p>
+      <p class="detail-software"><a href="https://github.com/ElmerCSC/elmerfem">Elmer FEM 26.2.1</a></p>
     </header>
     <dl class="case-brief" aria-label="任务概览">
       <div><dt>给定输入</dt><dd>三条层合试片在多种加热历史下的双面瞬态合成热图，及已知的吸收功率。</dd></div>
       <div><dt>要做的事</dt><dd>每条试片用同一组参数拟合各次校准，估计两处接触热阻分布、各向异性导热和表面换热。</dd></div>
       <div><dt>预期交付</dt><dd>四个新工况的内部温度与带方向的累积热量，以及可复查的 Elmer 有限元项目。</dd></div>
     </dl>
-    <figure class="detail-figure theme-thermal">
+    <nav class="case-nav" aria-label="本页目录"><a href="#task">任务拆解</a><a href="#inputs">输入与来源</a><a href="#figure">图示</a><a href="#outputs">预期交付</a></nav>
+    <section class="case-block" id="task">
+      <h2>用表面温度区分三种热效应</h2>
+      <p class="case-intro">界面热阻、材料内部导热和表面散热都可能产生相似的温度曲线。需要同时解释两面的多组观测，才能区分它们。</p>
+      <ol class="task-steps">
+        <li><strong>用校准数据估计材料参数</strong><p>给每条试片拟合一组参数，同时恢复两个埋藏界面的热阻分布、方向相关的导热和表面换热。</p></li>
+        <li><strong>把模型移到新工况</strong><p>改变加热面、热源位置或环境温度，预测试片内部的温度和各条路径上带方向的累积热量。</p></li>
+        <li><strong>检查哪些推断稳定</strong><p>比较固定与放开其他参数时的热阻不确定性，并找出最有助于改善目标预测的补充测量。</p></li>
+      </ol>
+    </section>
+    <section class="case-block" id="inputs">
+      <h2>输入与来源</h2>
+      <dl class="resource-list">
+        <div><dt>合成热图</dt><dd>3 条层合试片，每条有 4 组校准工况。每组包含 15 个时刻，正反面各 40 个测量位置，温度以 K 表示。</dd></div>
+        <div><dt>校准与预测工况</dt><dd>校准覆盖正、反面均匀加热与局部加热。另给 4 组新加热和环境条件，供拟合完成后预测。</dd></div>
+        <div><dt>已知条件</dt><dd>初始温度为 293.15 K，吸收功率已知。合成测量叠加标准差为 0.03 K 的独立噪声。</dd></div>
+      </dl>
+    </section>
+    <figure class="detail-figure theme-thermal" id="figure">
       <div class="figure-toolbar"><h2>瞬态温度场</h2><div class="figure-controls" role="group" aria-label="切换观测面"><button type="button" data-mode="default" data-note="正面温度示意。横向为沿试片的位置。" aria-pressed="true">正面</button><button type="button" data-mode="alternative" data-note="背面温度示意。两面共用色标。" aria-pressed="false">背面</button></div></div>
       <canvas data-plot="thermal-detail" role="img" aria-label="试片正面三个时刻的相对温度分布示意"></canvas>
       <figcaption aria-live="polite">正面温度示意。横向为沿试片的位置。</figcaption>
     </figure>
-    <div class="detail-text">
-      <section><h2>关键难点</h2><p>界面热阻、材料导热和表面散热都可能产生相似的温度变化。两面的多次观测有助于区分这些因素，同时保留接触界面两侧的温度跳变。</p></section>
-      <section><h2>结论的适用范围</h2><p>热阻的可辨识程度取决于校准数据和材料模型。任务还要求判断哪次额外测量最有助于缩小目标预测的不确定性。</p></section>
-    </div>
+    <section class="case-block" id="outputs">
+      <h2>预期交付与复查</h2>
+      <table class="deliverable-table" aria-label="预期交付文件"><thead><tr><th scope="col">产物</th><th scope="col">打开后能核对什么</th></tr></thead><tbody>
+        <tr><th scope="row"><code>model.json</code></th><td>每条试片在各校准工况使用同一组参数，包含两处接触热阻、导热和表面换热。</td></tr>
+        <tr><th scope="row"><code>predictions.npz</code> 与分析数组</th><td>四个新工况的内部温度和有向累积热量，以及热阻辨识、补充实验与界面正反向传热分析。</td></tr>
+        <tr><th scope="row">Elmer 原生项目</th><td>热源位置发生切换的工况对应三个独立试片项目。可打开网格、材料、边界条件与合计 45 个记录时刻的场解。</td></tr>
+      </tbody></table>
+      <p class="case-scope"><strong>适用范围</strong>预测依赖给定的材料模型和校准工况。分析能区分哪些热阻细节，还取决于观测位置与加热方式。</p>
+    </section>
   </main>
   <footer class="site-footer"><div class="wrap footer-inner"><a href="../../#cases">返回案例档案</a><a href="../glycolysis-redistribution/">下一案例 · 空间糖酵解分配 <span aria-hidden="true">↗</span></a></div></footer>
 </body>
