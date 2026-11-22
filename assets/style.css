@@ -64,6 +64,7 @@ h2 { font-size: clamp(30px, 3.2vw, 46px); line-height: 1.22; letter-spacing: -.0
 .filters, .figure-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
 .filters { margin: 22px 0 19px; }
 .filters button, .figure-controls button { border: 1px solid var(--line); border-radius: 6px; padding: 6px 12px; background: var(--white); color: var(--ink); font-size: 14px; }
+.filters button { font-size: 16px; font-weight: 650; }
 .filters button:hover, .figure-controls button:hover { border-color: var(--accent); }
 .filters button[aria-pressed="true"], .figure-controls button[aria-pressed="true"] { color: var(--accent-dark); border-color: #b8a7e4; background: var(--lavender); }
 .filter-count { margin-left: auto; font-size: 14px; color: var(--subtle); }
@@ -79,8 +80,8 @@ h2 { font-size: clamp(30px, 3.2vw, 46px); line-height: 1.22; letter-spacing: -.0
 .theme-metabolism { background: #142e39; }
 .theme-gel { background: #241e41; }
 .card-body { display: flex; flex: 1; flex-direction: column; padding: 18px 21px 15px; }
-.case-meta { font-size: 14px; font-weight: 600; color: var(--accent-dark); }
-.case-meta span { margin-inline: 3px; }
+.case-meta { display: flex; align-items: baseline; flex-wrap: wrap; column-gap: 10px; color: var(--subtle); font-size: 14px; }
+.case-meta strong { color: var(--accent-dark); font-size: 20px; font-weight: 750; }
 .card-body h3 { font-size: clamp(20px, 2.25vw, 28px); line-height: 1.32; margin-top: 6px; letter-spacing: -.04em; }
 .card-body h3 a { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .card-body h3 a span { font-size: 18px; color: var(--accent); }
