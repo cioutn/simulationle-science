@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="用 Virtual Cell 建立空间代谢模型，比较糖酵解系统在不同条件下的局部暴露和整体周转。">
+  <title>空间糖酵解分配 · SimulationLE / Science</title>
+  <link rel="icon" href="../../assets/favicon.png">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <script type="module" src="../../assets/site.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <header class="site-header"><div class="wrap header-inner"><a class="brand" href="../../"><span class="brand-mark" aria-hidden="true"></span><span>SimulationLE <span class="brand-slash">/</span> Science</span></a><nav aria-label="主导航"><a href="../../#cases">案例档案</a><a href="../../#evaluation">评测说明</a><a class="nav-external" href="https://huayuankou333.github.io/omniale/simulationle-engineer/">Engineer <span aria-hidden="true">↗</span></a></nav></div></header>
+  <main id="main" class="detail">
+    <p class="breadcrumb"><a href="../../#cases">案例档案</a><span aria-hidden="true">/</span>系统生物学</p>
+    <header class="detail-header"><p class="eyebrow"><span></span> GLYCOLYSIS REDISTRIBUTION</p><h1>空间糖酵解分配</h1><p class="detail-lead">用空间代谢模型比较不同条件下的局部代谢物暴露和整体 ATP 周转。</p><ul class="detail-meta"><li>Virtual Cell 8.1.8.06</li><li>反应扩散</li><li>时空预测</li></ul></header>
+    <figure class="detail-figure theme-metabolism">
+      <div class="figure-toolbar"><h2>空间与时间的浓度图</h2><div class="figure-controls" role="group" aria-label="切换示意条件"><button type="button" data-mode="default" data-note="原创示意，条件 A 的相对浓度分布。横向为空间位置，时间自上而下。" aria-pressed="true">条件 A</button><button type="button" data-mode="alternative" data-note="原创示意，条件 B 的相对浓度分布。两种条件共用同一色标。" aria-pressed="false">条件 B</button></div></div>
+      <canvas data-plot="metabolism-detail" role="img" aria-label="二维热图示意代谢物的相对浓度随空间位置和时间变化"></canvas>
+      <figcaption aria-live="polite">原创示意，条件 A 的相对浓度分布。横向为空间位置，时间自上而下。</figcaption>
+    </figure>
+    <div class="detail-layout">
+      <div class="detail-text">
+        <section><h2>科学问题</h2><p>空间上局部累积的代谢物可能被整体平均值掩盖。任务要求用同一个模型比较多个候选条件，同时跟踪局部暴露和系统整体周转。</p></section>
+        <section><h2>数据与假设</h2><p>两组带噪声的合成时空观测用于校准。反应扩散模型描述 23 种代谢物，三种前瞻条件用于检验同一模型的预测和分配决策。</p></section>
+        <section><h2>推断与交付</h2><p>估计共享的动力学与输运因子，比较固定分配和候选分配下的时空响应。Virtual Cell 项目保留空间方程与仿真作业，以便复查预测如何产生。</p></section>
+        <section><h2>结论的适用范围</h2><p>候选方案按指定模型和扰动条件比较。相关检查涵盖预测、暴露和对空间输运的解释。</p></section>
+      </div>
+      <aside class="evidence" aria-labelledby="evidence-title"><h2 id="evidence-title">验证记录</h2><dl><div><dt>参考解检查</dt><dd>44/44 项通过</dd></div><div><dt>Agent 试验</dt><dd>Astra xhigh · 44/44 项通过</dd></div><div><dt>对应版本</dt><dd>2026-11-13 核心修订</dd></div></dl><p class="evidence-note">来源为对应版本的打包记录。两组结果按检查项分别计数。</p></aside>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="wrap footer-inner"><a href="../../#cases">返回案例档案</a><a href="../donnan-bilayer-transfer/">下一案例 · Donnan 双层凝胶 <span aria-hidden="true">↗</span></a></div></footer>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="用 3D Slicer 复查纵向 PET 摄取变化在配准、分辨率和测量不确定性下的可行区间。">
+  <title>纵向 PET 摄取变化 · SimulationLE / Science</title>
+  <link rel="icon" href="../../assets/favicon.png">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <script type="module" src="../../assets/site.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <header class="site-header"><div class="wrap header-inner"><a class="brand" href="../../"><span class="brand-mark" aria-hidden="true"></span><span>SimulationLE <span class="brand-slash">/</span> Science</span></a><nav aria-label="主导航"><a href="../../#cases">案例档案</a><a href="../../#evaluation">评测说明</a><a class="nav-external" href="https://huayuankou333.github.io/omniale/simulationle-engineer/">Engineer <span aria-hidden="true">↗</span></a></nav></div></header>
+  <main id="main" class="detail">
+    <p class="breadcrumb"><a href="../../#cases">案例档案</a><span aria-hidden="true">/</span>定量影像</p>
+    <header class="detail-header"><p class="eyebrow"><span></span> LONGITUDINAL PET BOUNDS</p><h1>纵向 PET 摄取变化</h1><p class="detail-lead">把配准、扫描分辨率和相关噪声一起纳入可行范围，判断两次扫描之间哪些摄取变化有确定方向。</p><ul class="detail-meta"><li>3D Slicer 5.8.1</li><li>合成体模</li><li>不确定性量化</li></ul></header>
+    <figure class="detail-figure theme-pet">
+      <div class="figure-toolbar"><h2>从切片到变化区间</h2><div class="figure-controls" role="group" aria-label="切换示意图"><button type="button" data-mode="default" data-note="原创示意，两次访问的合成体模切片。颜色表示相对信号强弱。" aria-pressed="true">配对切片</button><button type="button" data-mode="alternative" data-note="原创示意，区间跨过零意味着变化方向未定；整个区间落在零的一侧时，可在该不确定性范围内判断方向。" aria-pressed="false">变化区间</button></div></div>
+      <canvas data-plot="pet-detail" role="img" aria-label="两次访问的合成体模切片，颜色表示相对信号强弱"></canvas>
+      <figcaption aria-live="polite">原创示意，两次访问的合成体模切片。颜色表示相对信号强弱。</figcaption>
+    </figure>
+    <div class="detail-layout">
+      <div class="detail-text">
+        <section><h2>科学问题</h2><p>两次扫描中看到的信号差，可能来自实际摄取变化，也可能来自边界位置偏移和邻近区域的信号混合。任务要求确定目标区相对参考区的摄取比变化，并判断目标区之间的变化排序是否稳健。</p></section>
+        <section><h2>数据与假设</h2><p>使用具有八个区室的合成体模，提供两次访问的解剖、分割、PET 数据及扫描校准。两次访问共用扫描分辨率参数，区域测量误差可以相关。结果用无量纲的摄取比变化表示。</p></section>
+        <section><h2>推断与交付</h2><p>对每项比较给出在设定假设下可达到的上下界，并保留对应的配准、分辨率和活动分布。通过 3D Slicer 项目复查原始影像、分区与定量图，核对支持区间端点的空间状态。</p></section>
+        <section><h2>结论的适用范围</h2><p>区间依赖题目设定的配准与测量不确定性。合成体模用于检验分析流程。</p></section>
+      </div>
+      <aside class="evidence" aria-labelledby="evidence-title"><h2 id="evidence-title">验证记录</h2><dl><div><dt>Agent 试验</dt><dd>Astra xhigh · 3/3 次通过</dd></div><div><dt>对应版本</dt><dd>2026-11-13 题面修订</dd></div></dl><p class="evidence-note">来源为对应版本的打包记录。通过比例以完整试验为单位。</p></aside>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="wrap footer-inner"><a href="../../#cases">返回案例档案</a><a href="../laminate-contact-transfer/">下一案例 · 层合材料热接触反演 <span aria-hidden="true">↗</span></a></div></footer>
+</body>
+</html>
