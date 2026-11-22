@@ -14,16 +14,23 @@
   <header class="site-header"><div class="wrap header-inner"><a class="brand" href="../../"><span class="brand-mark" aria-hidden="true"></span><span>SimulationLE <span class="brand-slash">/</span> Science</span></a><nav aria-label="主导航"><a href="../../#cases">案例档案</a><a class="nav-external" href="https://huayuankou333.github.io/omniale/simulationle-engineer/">Engineer <span aria-hidden="true">↗</span></a></nav></div></header>
   <main id="main" class="detail">
     <p class="breadcrumb"><a href="../../#cases">案例档案</a><span aria-hidden="true">/</span>影像科学</p>
-    <header class="detail-header"><h1>纵向 PET 摄取变化</h1><p class="detail-software">3D Slicer 5.8.1</p></header>
+    <header class="detail-header">
+      <h1>纵向 PET 摄取变化</h1>
+      <p class="detail-question">当两次扫描的配准、分辨率和噪声都有不确定性，哪些区域的摄取变化仍能确定方向？</p>
+      <p class="detail-software">3D Slicer 5.8.1</p>
+    </header>
+    <dl class="case-brief" aria-label="任务概览">
+      <div><dt>给定输入</dt><dd>八区室合成体模的两次解剖影像、分割、PET 数据及扫描仪校准信息。</dd></div>
+      <div><dt>要做的事</dt><dd>在给定的测量不确定性下，求目标区相对参考区的摄取比变化区间，并检验区域排序和空间一致性。</dd></div>
+      <div><dt>预期交付</dt><dd>摄取变化区间、能达到上下界的参数组合，以及可重新打开的 3D Slicer 场景。</dd></div>
+    </dl>
     <figure class="detail-figure theme-pet">
       <div class="figure-toolbar"><h2>PET 对比</h2><div class="figure-controls" role="group" aria-label="切换示意图"><button type="button" data-mode="default" data-note="合成体模示意。颜色表示相对信号强度。" aria-pressed="true">配对切片</button><button type="button" data-mode="alternative" data-note="区间示意。跨过零时，变化方向未定。" aria-pressed="false">变化区间</button></div></div>
       <canvas data-plot="pet-detail" role="img" aria-label="两次访问的合成体模切片，颜色表示相对信号强弱"></canvas>
       <figcaption aria-live="polite">合成体模示意。颜色表示相对信号强度。</figcaption>
     </figure>
     <div class="detail-text">
-      <section><h2>科学问题</h2><p>这项定量影像任务考察两次扫描之间的摄取变化。边界偏移和邻近区域的信号混合也会改变测量值，因此要判断摄取比的变化方向和目标区之间的排序是否稳健。</p></section>
-      <section><h2>数据与假设</h2><p>使用具有八个区室的合成体模，提供两次访问的解剖、分割、PET 数据及扫描校准。两次访问共用扫描分辨率参数，区域测量误差可以相关。结果用无量纲的摄取比变化表示。</p></section>
-      <section><h2>推断与交付</h2><p>对每项比较给出在设定假设下可达到的上下界，并保留对应的配准、分辨率和活动分布。通过 3D Slicer 项目复查原始影像、分区与定量图，核对支持区间端点的空间状态。</p></section>
+      <section><h2>关键难点</h2><p>边界偏移和邻近区域的信号混合都可能改变测量值。两次扫描共用分辨率参数，区域测量误差也可能相关，因此需要联合考虑这些因素。</p></section>
       <section><h2>结论的适用范围</h2><p>区间依赖题目设定的配准与测量不确定性。合成体模用于检验分析流程。</p></section>
     </div>
   </main>

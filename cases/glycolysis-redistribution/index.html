@@ -14,17 +14,24 @@
   <header class="site-header"><div class="wrap header-inner"><a class="brand" href="../../"><span class="brand-mark" aria-hidden="true"></span><span>SimulationLE <span class="brand-slash">/</span> Science</span></a><nav aria-label="主导航"><a href="../../#cases">案例档案</a><a class="nav-external" href="https://huayuankou333.github.io/omniale/simulationle-engineer/">Engineer <span aria-hidden="true">↗</span></a></nav></div></header>
   <main id="main" class="detail">
     <p class="breadcrumb"><a href="../../#cases">案例档案</a><span aria-hidden="true">/</span>生物学</p>
-    <header class="detail-header"><h1>空间糖酵解分配</h1><p class="detail-software">Virtual Cell 8.1.8.06</p></header>
+    <header class="detail-header">
+      <h1>空间糖酵解分配</h1>
+      <p class="detail-question">怎样调整酶分配，才能降低局部乙醛暴露，同时维持 ATPase 周转？</p>
+      <p class="detail-software">Virtual Cell 8.1.8.06</p>
+    </header>
+    <dl class="case-brief" aria-label="任务概览">
+      <div><dt>给定输入</dt><dd>两组带噪声的合成时空观测，以及描述 23 种代谢物的反应扩散模型。</dd></div>
+      <div><dt>要做的事</dt><dd>从观测推断共享的动力学和输运参数，在三种预设条件下比较固定分配和候选方案。</dd></div>
+      <div><dt>预期交付</dt><dd>一套分配方案、两种分配下 23 种代谢物的时空预测，以及可复查的 Virtual Cell 项目。</dd></div>
+    </dl>
     <figure class="detail-figure theme-metabolism">
       <div class="figure-toolbar"><h2>代谢物浓度</h2><div class="figure-controls" role="group" aria-label="切换示意条件"><button type="button" data-mode="default" data-note="条件 A 的浓度示意。时间自上而下。" aria-pressed="true">条件 A</button><button type="button" data-mode="alternative" data-note="条件 B 的浓度示意。两种条件共用色标。" aria-pressed="false">条件 B</button></div></div>
       <canvas data-plot="metabolism-detail" role="img" aria-label="二维热图示意代谢物的相对浓度随空间位置和时间变化"></canvas>
       <figcaption aria-live="polite">条件 A 的浓度示意。时间自上而下。</figcaption>
     </figure>
     <div class="detail-text">
-      <section><h2>科学问题</h2><p>这项系统生物学任务用空间代谢模型比较多个条件，同时跟踪局部代谢物暴露和整体 ATP 周转。局部累积容易被整体平均值掩盖。</p></section>
-      <section><h2>数据与假设</h2><p>两组带噪声的合成时空观测用于校准。反应扩散模型描述 23 种代谢物，三种前瞻条件用于检验同一模型的预测和分配决策。</p></section>
-      <section><h2>推断与交付</h2><p>估计共享的动力学与输运因子，比较固定分配和候选分配下的时空响应。Virtual Cell 项目保留空间方程与仿真作业，以便复查预测如何产生。</p></section>
-      <section><h2>结论的适用范围</h2><p>候选方案按指定模型和扰动条件比较。相关检查涵盖预测、暴露和对空间输运的解释。</p></section>
+      <section><h2>关键难点</h2><p>在这项系统生物学任务中，整体平均浓度可能掩盖局部峰值。分配方案需要同时满足局部暴露和整体周转两方面的要求。</p></section>
+      <section><h2>结论的适用范围</h2><p>候选方案的比较依赖设定的空间模型、校准数据和三种预设扰动条件。</p></section>
     </div>
   </main>
   <footer class="site-footer"><div class="wrap footer-inner"><a href="../../#cases">返回案例档案</a><a href="../donnan-bilayer-transfer/">下一案例 · Donnan 双层凝胶 <span aria-hidden="true">↗</span></a></div></footer>

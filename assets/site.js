@@ -139,13 +139,19 @@ function phantom(x, y, followUp) {
   return .18 + shell + target + neighbor + reference - split + texture;
 }
 
-function petPair(context, width, height, compact) {
+function petCover(context, width, height) {
+  background(context, width, height, theme.pet);
+  const size = Math.min(width - 14, height - 22);
+  raster(context, (width - size) / 2, (height - size) / 2, size, size, warm, (x, y) => phantom(x, y, true));
+}
+
+function petPair(context, width, height) {
   const colors = theme.pet;
   background(context, width, height, colors);
-  const size = Math.min((width - 54) / 2, height - (compact ? 35 : 61), 310);
+  const size = Math.min((width - 54) / 2, height - 61, 310);
   const gap = Math.min(38, width * .07);
   const left = (width - size * 2 - gap) / 2;
-  const top = (height - size - (compact ? 11 : 23)) / 2;
+  const top = (height - size - 23) / 2;
   for (const visit of [0, 1]) {
     const x = left + visit * (size + gap);
     context.strokeStyle = colors.line;
@@ -155,7 +161,7 @@ function petPair(context, width, height, compact) {
     line(context, x + 5, top + size / 2, x + size - 5, top + size / 2, '#f4c8fc65');
     label(context, `Visit ${visit}`, x + 8, top + 16, '#f1e6fe');
   }
-  if (!compact) scale(context, width, height, warm, colors.light);
+  scale(context, width, height, warm, colors.light);
 }
 
 function petIntervals(context, width, height) {
@@ -189,7 +195,7 @@ function petIntervals(context, width, height) {
 function thermalPlot(context, width, height, compact, backFace) {
   const colors = theme.thermal;
   background(context, width, height, colors);
-  const plotWidth = Math.min(width - 52, 660);
+  const plotWidth = Math.min(width - (compact ? 20 : 52), 660);
   const left = (width - plotWidth) / 2;
   const rowHeight = (height - (compact ? 57 : 83)) / 3;
   for (let frame = 0; frame < 3; frame += 1) {
@@ -201,7 +207,7 @@ function thermalPlot(context, width, height, compact, backFace) {
     });
     context.strokeStyle = colors.line;
     context.strokeRect(left, y, plotWidth, rowHeight);
-    label(context, ['t₁', 't₂', 't₃'][frame], left + 8, y + 15, '#ffe7e1');
+    if (!compact) label(context, ['t₁', 't₂', 't₃'][frame], left + 8, y + 15, '#ffe7e1');
   }
   if (!compact) scale(context, width, height, warm, colors.light);
 }
@@ -209,10 +215,10 @@ function thermalPlot(context, width, height, compact, backFace) {
 function metabolismPlot(context, width, height, compact, later) {
   const colors = theme.metabolism;
   background(context, width, height, colors);
-  const plotWidth = Math.min(width - 88, 650);
+  const plotWidth = Math.min(width - (compact ? 20 : 88), 650);
   const left = (width - plotWidth) / 2;
   const top = compact ? 16 : 24;
-  const plotHeight = height - (compact ? 47 : 86);
+  const plotHeight = height - (compact ? 32 : 86);
   raster(context, left, top, plotWidth, plotHeight, cool, (x, y) => {
     const diffusion = .10 + y * (later ? .29 : .17);
     const source = .82 * gaussian(x, y, .19 + .51 * y, .2, diffusion, .75);
@@ -221,15 +227,17 @@ function metabolismPlot(context, width, height, compact, later) {
   });
   context.strokeStyle = colors.light;
   context.strokeRect(left, top, plotWidth, plotHeight);
-  label(context, '时间', left - 9, top + plotHeight / 2, colors.light, 'right');
-  label(context, '空间位置', left + plotWidth / 2, top + plotHeight + 18, colors.light, 'center');
-  if (!compact) scale(context, width, height, cool, colors.light);
+  if (!compact) {
+    label(context, '时间', left - 9, top + plotHeight / 2, colors.light, 'right');
+    label(context, '空间位置', left + plotWidth / 2, top + plotHeight + 18, colors.light, 'center');
+    scale(context, width, height, cool, colors.light);
+  }
 }
 
 function gelPlot(context, width, height, compact, blocked) {
   const colors = theme.gel;
   background(context, width, height, colors);
-  const length = Math.min(width * .79, 660);
+  const length = Math.min(width * .79, width - 32, 660);
   const left = (width - length) / 2;
   const middle = height * .58;
   const bend = height * (blocked ? .06 : .30);
@@ -274,8 +282,9 @@ function paint(canvas) {
   const compact = size === 'card';
   const alternative = canvas.dataset.mode === 'alternative';
   if (name === 'pet') {
-    if (alternative) petIntervals(context, width, height);
-    else petPair(context, width, height, compact);
+    if (compact) petCover(context, width, height);
+    else if (alternative) petIntervals(context, width, height);
+    else petPair(context, width, height);
   }
   if (name === 'thermal') thermalPlot(context, width, height, compact, alternative);
   if (name === 'metabolism') metabolismPlot(context, width, height, compact, alternative);
