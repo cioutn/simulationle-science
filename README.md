@@ -1,12 +1,14 @@
 # SimulationLE / Science
 
-收录纵向 PET 摄取变化、层合材料热接触反演、空间糖酵解分配及 Donnan 双层凝胶四个案例。
+收录医学、热学、生物学、材料学、天文学、化学和神经科学共七个案例。
 
 首页可以按学科和软件查找案例，比较科学问题和预期交付。详情页提供任务概览和页内目录，按任务步骤、输入来源、可切换的示意图和预期交付展开。
 
 ## 本地预览
 
-在仓库根目录运行 `python3 -m http.server 8000`，打开 [localhost:8000](http://localhost:8000/)。站点由 HTML、CSS 和 JavaScript 构成。四个详情页分别位于 `cases/`，共享样式、图表和交互脚本位于 `assets/`。
+编辑 `content/cases.json` 后，在仓库根目录运行 `python3 scripts/build_catalog.py` 生成首页和各个详情页。运行 `python3 scripts/build_catalog.py --check` 核对生成的页面。
+
+运行 `python3 -m http.server 8000`，打开 [localhost:8000](http://localhost:8000/)。独立详情页位于 `cases/`，共享样式、图表和交互脚本位于 `assets/`。
 
 ## 发布
 

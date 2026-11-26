@@ -80,6 +80,9 @@ canvas { display: block; width: 100%; }
 .theme-thermal { background: #2a1d35; }
 .theme-metabolism { background: #142e39; }
 .theme-gel { background: #241e41; }
+.theme-orbit { background: #192440; }
+.theme-reactor { background: #30213b; }
+.theme-dendrite { background: #142c3c; }
 .card-body { grid-area: body; }
 .case-meta { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 11px; margin-bottom: 8px; color: var(--subtle); font-size: 15px; }
 .case-meta strong { color: var(--accent-dark); font-size: 20px; font-weight: 700; }
@@ -123,7 +126,7 @@ canvas { display: block; width: 100%; }
 .resource-list > div + div { border-top: 1px solid var(--line); }
 .resource-list dt { font-weight: 700; }
 .resource-list dd { color: var(--subtle); }
-.resource-list a, .detail-software a { color: var(--accent-dark); text-decoration: underline; text-underline-offset: .2em; }
+.resource-list a, .detail-software a, .case-scope a { color: var(--accent-dark); text-decoration: underline; text-underline-offset: .2em; }
 .detail-figure { background: var(--white); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
 .figure-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 17px; }
 .figure-toolbar h2 { font-size: 17px; letter-spacing: 0; }

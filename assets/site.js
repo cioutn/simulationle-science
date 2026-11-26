@@ -44,6 +44,9 @@ const theme = {
   thermal: { background: '#2a1d35', line: '#52425e', light: '#f7d0cb' },
   metabolism: { background: '#142e39', line: '#315662', light: '#c5eff0' },
   gel: { background: '#241e41', line: '#493d68', light: '#e1d5f5' },
+  orbit: { background: '#192440', line: '#344568', light: '#dce8ff' },
+  reactor: { background: '#30213b', line: '#59415f', light: '#f9dbd3' },
+  dendrite: { background: '#142c3c', line: '#365162', light: '#d4efee' },
 };
 
 const warm = [[47, 34, 95], [96, 52, 140], [168, 65, 146], [229, 106, 127], [255, 168, 118], [255, 239, 167]];
@@ -269,6 +272,154 @@ function gelPlot(context, width, height, compact, blocked) {
   }
 }
 
+function dot(context, x, y, radius, color) {
+  context.fillStyle = color;
+  context.beginPath();
+  context.arc(x, y, radius, 0, Math.PI * 2);
+  context.fill();
+}
+
+function path(context, points, color, weight = 1) {
+  context.strokeStyle = color;
+  context.lineWidth = weight;
+  context.beginPath();
+  points.forEach(([x, y], index) => {
+    if (index === 0) context.moveTo(x, y);
+    else context.lineTo(x, y);
+  });
+  context.stroke();
+  context.lineWidth = 1;
+}
+
+function phaseBands(context, width, height, phases, colors) {
+  const span = Math.min(width - 30, 650);
+  const left = (width - span) / 2;
+  const step = span / phases.length;
+  const top = height * .40;
+  phases.forEach(([title, color], index) => {
+    const x = left + index * step;
+    context.fillStyle = color;
+    context.globalAlpha = .22;
+    context.fillRect(x + 2, top, step - 4, height * .22);
+    context.globalAlpha = 1;
+    line(context, x + 2, top, x + step - 2, top, color);
+    label(context, title, x + step / 2, top + height * .12, colors.light, 'center');
+  });
+  line(context, left, height * .72, left + span, height * .72, colors.line);
+  label(context, '时间顺序', left + span, height * .72 + 20, colors.light, 'right');
+}
+
+function orbitPlot(context, width, height, compact, axes) {
+  const colors = theme.orbit;
+  background(context, width, height, colors);
+  if (compact) {
+    const radius = Math.min(width * .39, height * .37);
+    const x = width / 2;
+    const y = height / 2;
+    const rotation = -.48;
+    for (const scale of [.53, 1]) {
+      context.strokeStyle = '#8eb6ff';
+      context.beginPath();
+      context.ellipse(x, y, radius * scale, radius * scale * .57, rotation, 0, Math.PI * 2);
+      context.stroke();
+      dot(context, x + radius * scale * Math.cos(rotation), y + radius * scale * Math.sin(rotation), 2.7, '#a8cdfa');
+    }
+    dot(context, x, y, 5, '#ffd58f');
+    return;
+  }
+  if (!axes) {
+    phaseBands(context, width, height, [['历史观测', '#9fb0ef'], ['追加观测', '#78dfcf'], ['留出预测', '#f4bd83']], colors);
+    return;
+  }
+  const x = width * .46;
+  const y = height * .57;
+  const size = Math.min(width * .23, height * .33);
+  path(context, [[x - size, y], [x + size, y]], '#83daba', 2);
+  path(context, [[x, y + size * .55], [x, y - size]], '#a6c6ff', 2);
+  path(context, [[x, y], [x + size * .67, y + size * .65]], '#f9c78c', 2);
+  dot(context, x, y, 6, '#fff0c3');
+  label(context, '天球平面 X', x + size + 6, y + 4, colors.light);
+  label(context, '天球平面 Y', x, y - size - 10, colors.light, 'center');
+  label(context, '视线方向', x + size * .67, y + size * .65 + 21, colors.light, 'center');
+}
+
+function reactorPlot(context, width, height, compact, checks) {
+  const colors = theme.reactor;
+  background(context, width, height, colors);
+  if (compact) {
+    const w = width * .57;
+    const h = Math.min(height * .47, w * 1.15);
+    const x = (width - w) / 2;
+    const y = (height - h) / 2;
+    context.fillStyle = '#60405f';
+    context.strokeStyle = '#f3aeaa';
+    context.beginPath();
+    context.roundRect(x, y, w, h, 7);
+    context.fill();
+    context.stroke();
+    path(context, [[width / 2, y - 9], [width / 2, y + h * .71]], '#ffe0b8', 2);
+    path(context, [[x + w * .24, y + h * .63], [x + w * .76, y + h * .73]], '#ffe0b8', 2);
+    path(context, [[x - 6, y + h * .3], [x, y + h * .3]], '#d299db', 2);
+    path(context, [[x + w, y + h * .72], [x + w + 6, y + h * .72]], '#d299db', 2);
+    return;
+  }
+  if (!checks) {
+    phaseBands(context, width, height, [['历史数据', '#d6a9eb'], ['虚拟中试', '#f0b2b5'], ['方案比较', '#f6c988']], colors);
+    return;
+  }
+  phaseBands(context, width, height, [['短暂干预', '#caa0e5'], ['恢复工况', '#edb4a8'], ['检查出口', '#f6cb8c']], colors);
+}
+
+const branches = [
+  [[.5,.63],[.50,.43],[.54,.31],[.52,.17],[.57,.07]],
+  [[.50,.43],[.34,.34],[.26,.19],[.13,.12]],
+  [[.34,.34],[.19,.32],[.08,.41]],
+  [[.26,.19],[.30,.09],[.25,.04]],
+  [[.54,.31],[.69,.23],[.78,.09]],
+  [[.69,.23],[.82,.23],[.89,.16]],
+  [[.50,.52],[.67,.46],[.75,.36],[.88,.33]],
+  [[.67,.46],[.78,.53],[.92,.49]],
+  [[.5,.63],[.39,.70],[.32,.83],[.23,.88]],
+  [[.39,.70],[.23,.68],[.10,.73]],
+  [[.5,.63],[.60,.75],[.56,.92]],
+  [[.60,.75],[.74,.84],[.86,.83]],
+];
+
+function dendritePlot(context, width, height, compact, signals) {
+  const colors = theme.dendrite;
+  background(context, width, height, colors);
+  if (signals) {
+    const span = Math.min(width - 42, 600);
+    const left = (width - span) / 2;
+    const tracks = [
+      ['电压', '#f5c78f', [[0,0],[.22,0],[.3,.12],[.36,1],[.41,-.14],[.50,.04],[.63,0],[1,0]]],
+      ['钙信号', '#94dfd1', [[0,0],[.29,0],[.35,.18],[.46,.84],[.56,.72],[.7,.37],[.85,.13],[1,.04]]],
+    ];
+    tracks.forEach(([title, color, curve], index) => {
+      const base = height * (.39 + .38 * index);
+      line(context, left, base, left + span, base, colors.line);
+      path(context, curve.map(([t, v]) => [left + span * t, base - height * .22 * v]), color, 2.2);
+      label(context, title, left, base - 15, colors.light);
+    });
+    label(context, '时间', left + span, height * .88, colors.light, 'right');
+    return;
+  }
+  const span = compact ? width * .93 : Math.min(width * .80, 550);
+  const depth = height * .81;
+  const x = (u) => (width - span) / 2 + u * span;
+  const y = (v) => (height - depth) / 2 + v * depth;
+  for (const branch of branches) {
+    path(context, branch.map(([u, v]) => [x(u), y(v)]), '#92d8ca', compact ? 1.1 : 2);
+  }
+  dot(context, x(.5), y(.63), compact ? 4 : 8, '#cef3de');
+  dot(context, x(.78), y(.09), compact ? 2 : 5, '#ffd29a');
+  dot(context, x(.34), y(.34), compact ? 2 : 5, '#96c2ff');
+  if (!compact) {
+    label(context, '刺激位置', x(.78) + 9, y(.09) + 4, '#ffd29a');
+    label(context, '记录位置', x(.34) - 9, y(.34) + 6, '#b0d0ff', 'right');
+  }
+}
+
 function paint(canvas) {
   const width = canvas.clientWidth;
   const height = canvas.clientHeight;
@@ -289,6 +440,9 @@ function paint(canvas) {
   if (name === 'thermal') thermalPlot(context, width, height, compact, alternative);
   if (name === 'metabolism') metabolismPlot(context, width, height, compact, alternative);
   if (name === 'gel') gelPlot(context, width, height, compact, alternative);
+  if (name === 'orbit') orbitPlot(context, width, height, compact, alternative);
+  if (name === 'reactor') reactorPlot(context, width, height, compact, alternative);
+  if (name === 'dendrite') dendritePlot(context, width, height, compact, alternative);
 }
 
 const observer = new ResizeObserver((entries) => {
